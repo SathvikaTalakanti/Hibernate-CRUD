@@ -9,7 +9,7 @@ public class UpdateStudentDemo {
 
         //create session factory
         SessionFactory factory= new Configuration()
-                .configure("hibernate.cfg.xml")
+                .configure("com/hibernatesample/hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
                 .buildSessionFactory();
 

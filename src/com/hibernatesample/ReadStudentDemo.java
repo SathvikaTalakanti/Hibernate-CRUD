@@ -1,5 +1,4 @@
 package com.hibernatesample;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -9,7 +8,7 @@ public class ReadStudentDemo {
 
         //create session factory
         SessionFactory factory= new Configuration()
-                .configure("hibernate.cfg.xml")
+                .configure("com/hibernatesample/hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
                 .buildSessionFactory();
 
