@@ -1,46 +1,41 @@
-package com.hibernatesample;
+package com.CRUD;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class UpdateStudentDemo {
+public class DeleteStudentDemo {
     public static void main(String[] args){
 
         //create session factory
         SessionFactory factory= new Configuration()
-                .configure("com/hibernatesample/hibernate.cfg.xml")
+                .configure("com/CRUD/hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
                 .buildSessionFactory();
 
         //create session
         Session session= factory.getCurrentSession();
         try{
-
             int studentId=6;
-
             //now get a new session
             session=factory.getCurrentSession();
             session.beginTransaction();
             //retrieve student based on primary key
-            System.out.println("\ngetting student with id"+ studentId);
+            System.out.println("getting student with id"+ studentId);
             Student myStudent=session.get(Student.class, studentId);
-            System.out.println("\nUpdating Student");
-            myStudent.setFirstName("Scooby");
+
+            //delete the student
+            //System.out.println("Deleting student:"+myStudent);
+            //session.delete(myStudent);
+
+            //delete bunch of rows
+            session.createQuery("delete from Student where id=8").executeUpdate();
+
 
             session.getTransaction().commit();
 
             //commit transaction
-            System.out.println("\ncompleted!!");
-
-            session=factory.getCurrentSession();
-            session.beginTransaction();
-
-            System.out.println("\nupdate email of all students");
-
-            session.createQuery("update Student set email='foo@gmail.com'").executeUpdate();
-
-            session.getTransaction().commit();
+            System.out.println("completed!!");
         }finally{
             factory.close();
         }

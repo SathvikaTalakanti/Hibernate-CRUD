@@ -1,4 +1,4 @@
-package com.hibernatesample;
+package com.CRUD;
 
 
 import org.hibernate.Session;
@@ -12,7 +12,7 @@ public class QueryStudentDemo {
 
         //create session factory
         SessionFactory factory= new Configuration()
-                .configure("com/hibernatesample/hibernate.cfg.xml")
+                .configure("com/CRUD/hibernate.cfg.xml")
                 .addAnnotatedClass(Student.class)
                 .buildSessionFactory();
 

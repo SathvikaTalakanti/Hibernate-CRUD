@@ -1,4 +1,4 @@
-package com.hibernatesample;
+package com.CRUD;
 import javax.persistence.*;
 @Entity
 @Table(name="student")
